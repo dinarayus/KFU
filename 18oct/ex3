@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+
+void delete_index(int N, int k) {
+	int *array;
+	array = new int[N];
+	for (int i = 0; i < N; i++) {
+		cin >> array[i];
+	}
+	for (int i = 0; i < N; i++) {
+		cout << array[i] << " ";
+	}
+	for (int i = 0; i < N; i++) {
+		if (i == k){
+			continue;
+			}
+		cout << array[i] << " ";
+	}
+	
+	
+}
+
+int main() {
+	int num;
+	cin >> num;
+	int ind;
+	cin >> ind;
+	delete_index(num, ind);
+
+}
