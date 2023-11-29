@@ -1,0 +1,43 @@
+#include <iostream>
+#include <string>
+#include<vector>
+using namespace std;
+
+
+bool isPalindrome(string word)
+{
+	for (int i = 0; i < word.size() / 2; i++)
+	{
+		if (word[i] != word[word.size() - i - 1])
+			return false;
+	}
+	return true;
+}
+
+int main()
+{
+	string stroka;
+	string str;
+	cout << "stroka: ";
+	getline(cin, stroka);
+	int count = stroka.length();
+	int k = 0;
+	int c = stroka.find(" ");
+
+	for (int i = 0; i < stroka.length();) {
+		if (stroka[i] == ' ') {
+			stroka.erase(i,1);
+		
+		}
+		else {
+			i++;
+		}
+	}
+	if (isPalindrome(stroka)) {
+		cout << stroka << " is a palindrome";
+	}
+	else {
+		cout << stroka << " isn't a palindrome";
+	}
+
+}
