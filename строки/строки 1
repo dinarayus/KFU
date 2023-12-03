@@ -1,0 +1,21 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main() {
+	setlocale(LC_ALL, "Russian");
+	string alph = "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz";
+	string stroka;
+	
+	getline(cin, stroka);
+	int K;
+	cin >> K;
+	int i = 0;
+	while (i < stroka.length()) {
+		if (alph.find((stroka[i])>=0)) {
+			stroka[i] = alph[alph.find(stroka[i]) + K];
+		}
+		i++;
+	
+	}
+	cout << stroka;
+}
