@@ -20,10 +20,6 @@ int main()
 	string str;
 	cout << "stroka: ";
 	getline(cin, stroka);
-	int count = stroka.length();
-	int k = 0;
-	int c = stroka.find(" ");
-
 	for (int i = 0; i < stroka.length();) {
 		if (stroka[i] == ' ') {
 			stroka.erase(i,1);
