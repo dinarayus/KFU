@@ -11,10 +11,16 @@ int main() {
 	cin >> K;
 	int i = 0;
 	while (i < stroka.length()) {
-		if (alph.find((stroka[i])>=0)) {
-			stroka[i] = alph[alph.find(stroka[i]) + K];
+		if (isalpha(stroka[i])) {
+			if (alph.find((stroka[i]) >= 0)) {
+				stroka[i] = alph[alph.find(stroka[i]) + K];
+				i++;
+			}
 		}
-		i++;
+		else {
+			i++;
+		}
+
 	
 	}
 	cout << stroka;
