@@ -1,0 +1,25 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main() {
+	string name;
+	string tmp = "";
+	getline(cin, name);
+	int i = 0;
+	int f = 0;
+	int count = 0;
+	for (int i = name.length() - 1; i > -1; i--)
+	{
+		if (name[i] != '.') count++;
+		else break;
+	}
+	name.erase(name.length() - count - 1, count + 1);
+	count = 0;
+	for (int i = name.length() - 1; i > -1; i--)
+	{
+		if (name[i] != '\\') count++;
+		else break;
+	}
+	name.erase(0, name.length() - count);
+	cout << name << endl;
+	}
