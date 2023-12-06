@@ -2,17 +2,17 @@
 #include<vector>
 using namespace std;
 
-void delete_index(int a[], int index) {
-	
-	for (int i = 0; i < a.size; i++) {
-		if (i == k){
-			a[i] = a[i+1];
+void delete_index(int a[],int N, int index) {
+
+	for (int i = 0; i < N; i++) {
+		if (i == index) {
+			a[i] = a[i + 1];
 			i++;
-			}
-		cout << array[i] << " ";
+		}
+		cout << a[i] << " ";
 	}
-	
-	
+
+
 }
 
 int main() {
@@ -26,9 +26,9 @@ int main() {
 	for (int i = 0; i < N; i++) {
 		cout << array[i] << " ";
 	}
-	
+	cout << endl;
 	int index;
 	cin >> index;
-	delete_index(array, index);
+	delete_index(array, N, index);
 
 }
