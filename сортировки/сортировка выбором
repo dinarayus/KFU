@@ -2,6 +2,7 @@
 using namespace std;
 
 void vybor(int a[], int N) {
+	int count = 0;
 	for (int i = 0; i < N - 1; i++) {
 		int min = i;
 		for (int j = i + 1; j < N; j++) {
@@ -15,7 +16,14 @@ void vybor(int a[], int N) {
 			a[i] = tmp;
 		}
 	}
-
+	for (int i = 0; i < N; i += 1)
+	{
+		if ((a[i] != a[i - 1]))
+		{
+			count += 1;
+		}
+	}
+	cout << count << endl;
 }
 int main()
 {
@@ -36,4 +44,3 @@ int main()
 		cout << array[i] << " ";
 	}
 }
-
