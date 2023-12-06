@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-void delete_index(int N, int k) {
+void delete_index(int a[], int index) {
 	int *array;
 	array = new int[N];
 	int array2[N-1];
