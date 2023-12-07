@@ -1,17 +1,9 @@
 #include<iostream>
+#include<iostream>
 using namespace std;
 
-void Zapolneniye_mass(int N) {
-	int *array;
-	array = new int[N];
-	for (int i = 0; i < N; i++) {
-		cin >> array[i];
-	}
-	for (int i = 0; i < N; i++) {
-		cout << array[i] << " ";
-	}
- }
-void back_mass(int array[],int N) {
+
+void back_mass(int array[], int N) {
 	for (int i = N - 1; i >= 0; i--)
 	{
 
@@ -22,7 +14,12 @@ void back_mass(int array[],int N) {
 int main() {
 	int num;
 	cin >> num;
-	Zapolneniye_mass(num)
-	back_mass(Zapolneniye_mass(num),num);
+	int *array;
+	array = new int[num];
+	for (int i = 0; i < num; i++) {
+		cin >> array[i];
+	}
+	cout << endl;
+	back_mass(array, num);
 
 }
