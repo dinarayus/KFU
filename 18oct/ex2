@@ -23,6 +23,6 @@ int main() {
 	int num;
 	cin >> num;
 	Zapolneniye_mass(num)
-	back_mass(num);
+	back_mass(Zapolneniye_mass(num),num);
 
 }
