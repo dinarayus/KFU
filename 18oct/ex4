@@ -1,1 +1,34 @@
+#include<iostream>
+using namespace std;
 
+
+void add_element(int array[], int N, int index, int element) {
+	for (int i = N; i >= index; i--) {
+		array[i] = array[i - 1];
+	}
+	array[index] = element;
+	N++;
+	for (int i = 0; i < N; i++)
+		cout << array[i] << "  ";
+	cout << endl;
+
+}
+int main() {
+	int num, index, element;
+	cin >> num;
+	int *array;
+	array = new int[num];
+	cout << "VVedite massiv:";
+	for (int i = 0; i < num; i++) {
+		cin >> array[i];
+	}
+	for (int i = 0; i < num; i++) {
+		cout << array[i] << " ";
+	}
+	cout << "VVedite element:";
+	cin >> element;
+	cout << "VVedite index:";
+	cin >> index;
+	add_element(array, num, index, element);
+
+}
