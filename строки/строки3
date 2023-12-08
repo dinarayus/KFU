@@ -1,0 +1,29 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+	string predl;
+	getline(cin, predlozh);
+
+	string word;
+
+	string maxim;
+
+	for (int i = 0; i < predl.size();  i++) {
+		if (isalpha(predl[i])) {
+			word += predl[i];
+		}
+		if (!(isalpha(predl[i]))) {
+			if (word.size() > maxim.size()) {
+				maxim = word;
+				word="";
+			}
+			else {
+				word = "";
+			}
+		}
+	}
+	cout << maxim;
+}
