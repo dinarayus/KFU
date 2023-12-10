@@ -4,7 +4,7 @@
 using namespace std;
 int main() {
 	ifstream fin("text.txt");
-	ofstream fout("right.txt");
+	ofstream fout("righttext.txt");
 	if (!fin.is_open()) {
 		cerr << "Input file is not open" << endl;
 		return 1;
@@ -17,7 +17,8 @@ int main() {
 	}
 	cout << "Count lines: " << count_lines << endl;
 	fin.clear();
-	fin.seekg(0, ios::beg);
+	fin.seekg(0,ios::beg);
+	fout.setf(ios_base::right);
 	int i = 0;
 	while (!fin.eof()) {
 		getline(fin, line);
