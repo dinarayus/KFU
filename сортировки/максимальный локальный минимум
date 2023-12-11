@@ -1,0 +1,24 @@
+#include <iostream>
+
+int findMaxLocalMin(int arr[], int size) {
+	int max_local_min = arr[0];
+
+	for (int i = 1; i < size - 1; i++) {
+		if (arr[i] < arr[i - 1] && arr[i] < arr[i + 1] && arr[i] > max_local_min) {
+			max_local_min = arr[i];
+		}
+	}
+
+	return max_local_min;
+}
+
+int main() {
+	int arr[] = { 3, 1, 4, 2, 8, 5, 7, 6 };
+	int size = sizeof(arr) / sizeof(arr[0]);
+
+	int max_local_min = findMaxLocalMin(arr, size);
+
+	std::cout << "Максимальный локальный минимум: " << max_local_min << std::endl;
+
+	return 0;
+}
