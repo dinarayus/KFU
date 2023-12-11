@@ -1,0 +1,49 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+using namespace std;
+int main() {
+	int min = 99999999;
+	int max = 0;
+	string filename = "replace.txt";
+	// Открытие файла для чтения
+	ifstream fin(filename);
+	if (!fin) {
+		cerr << "Ошибка открытия файла." << endl;
+		return 1;
+	}
+	int number;
+	vector<int> numbers;
+	// Чтение чисел из файла и сохранение в векторе
+	while (fin >> number) {
+		numbers.push_back(number);
+		if (number < min)
+		{
+			min = number;
+			max = min;
+			continue;
+		}
+		if (number > max) {
+			max = number;
+		}
+	}
+	fin.close();
+	// Нахождение позиций минимального и максимального чисел
+	auto minPos = find(numbers.begin(), numbers.end(), min);
+	auto maxPos = find(numbers.begin(), numbers.end(), max);
+	// Меняем местами минимальное и максимальное числа
+	if (minPos != numbers.end() && maxPos != numbers.end()) {
+		iter_swap(minPos, maxPos);
+	}
+	// Открытие файла для записи
+	ofstream fout(filename);
+	if (!fout) {
+		cerr << "Ошибка открытия файла." << endl;
+		return 1;
+	}
+	// Запись измененных чисел обратно в файл
+	for (const auto& num : numbers) {
+		fout << num << " ";
+	}
+	fout.close();
+}
