@@ -2,35 +2,45 @@
 #include <fstream>
 #include <string>
 using namespace std;
+
 int main() {
-	ifstream fin("text.txt");
-	ofstream fout("righttext.txt");
-	if (!fin.is_open()) {
-		cerr << "Input file is not open" << endl;
-		return 1;
-	}
-	string line;
-	int count_lines = 0;
-	while (!fin.eof()) {
-		getline(fin, line);
-		count_lines++;
-	}
-	cout << "Count lines: " << count_lines << endl;
-	fin.clear();
-	fin.seekg(0,ios::beg);
-	fout.setf(ios_base::right);
-	int i = 0;
-	while (!fin.eof()) {
-		getline(fin, line);
-		i++;
-		size_t p = 0;
-		while (p < line.size() && line[p] == ' ')
-			p++;
-		fout << line.substr(p);
-		if (i < count_lines)
-			fout << endl;
-	}
-	fin.close();
-	fout.close();
-	return 0;
+    ifstream fin("text.txt");
+    ofstream fout("right_text.txt");
+
+    if (!fin.is_open()) {
+        cerr << "input file is not open" << endl;
+        return 1;
+    }
+
+    string line;
+    int count_lines = 0;
+
+    while (!fin.eof()) {
+        getline(fin, line);
+        ++count_lines;
+    }
+
+    cout << "count lines: " << count_lines << endl;
+
+    fin.clear();
+    fin.seekg(0, ios::beg);
+
+    int i = 0;
+    while (!fin.eof()) {
+        getline(fin, line);
+        ++i;
+        size_t p = line.size();
+        while (p > 0 && line[p-1] == ' ')
+            --p;
+
+        string spaces(count_lines - i, ' ');
+
+        fout << spaces << line.substr(p) << endl;
+    }
+
+    fin.close();
+    fout.close();
+
+    return 0;
 }
+
