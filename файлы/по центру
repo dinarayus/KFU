@@ -1,0 +1,33 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+int main() {
+ifstream fin("text.txt");
+ofstream fout("centered_text.txt");
+string line;
+int count_lines = 0;
+while (!fin.eof()) {
+getline(fin, line);
+++count_lines;
+}
+cout << "count lines: " << count_lines << endl;
+fin.clear();
+fin.seekg(0, ios::beg);
+int i = 0;
+while (!fin.eof()) {
+getline(fin, line);
+++i;
+size_t p = line.size();
+while (p > 0 && line[p-1] == ' ')
+--p;
+string spaces((count_lines - p) / 2, ' ');
+fout << spaces << line.substr(p) << endl;
+}
+fin.close();
+fout.close();
+return 0;
+}
+
+
+
