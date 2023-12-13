@@ -17,7 +17,7 @@ int main() {
 
     while (!fin.eof()) {
         getline(fin, line);
-        ++count_lines;
+        count_lines++;
     }
 
     cout << "count lines: " << count_lines << endl;
@@ -28,10 +28,10 @@ int main() {
     int i = 0;
     while (!fin.eof()) {
         getline(fin, line);
-        ++i;
+        i++;
         size_t p = line.size();
         while (p > 0 && line[p-1] == ' ')
-            --p;
+            p--;
 
         string spaces(count_lines - i, ' ');
 
