@@ -8,7 +8,7 @@ int main() {
     cout << "Введите количество столбцов матрицы: ";
     cin >> M;
 
-    int matrix[N][M];
+    int spr[N][M];
 
     int num = 1;
     int row_start = 0, row_end = N - 1; // индексы начала и конца строк
@@ -17,14 +17,14 @@ int main() {
     while (row_start <= row_end && col_start <= col_end) {
         // заполнение верхней строки
         for (int i = col_start; i <= col_end; i++) {
-            matrix[row_start][i] = num;
+            spr[row_start][i] = num;
             num++;
         }
         row_start++;
 
         // заполнение правого столбца
         for (int i = row_start; i <= row_end; i++) {
-            matrix[i][col_end] = num;
+            spr[i][col_end] = num;
             num++;
         }
         col_end--;
@@ -32,7 +32,7 @@ int main() {
         // заполнение нижней строки
         if (row_start <= row_end) {
             for (int i = col_end; i >= col_start; i--) {
-                matrix[row_end][i] = num;
+                spr[row_end][i] = num;
                 num++;
             }
             row_end--;
@@ -41,7 +41,7 @@ int main() {
         // заполнение левого столбца
         if (col_start <= col_end) {
             for (int i = row_end; i >= row_start; i--) {
-                matrix[i][col_start] = num;
+                spr[i][col_start] = num;
                 num++;
             }
             col_start++;
@@ -52,7 +52,7 @@ int main() {
     cout << "Матрица, заполненная в виде спирали:\n";
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < M; j++) {
-            cout << matrix[i][j] << "\t";
+            cout << spr[i][j] << "\t";
         }
         cout << endl;
     }
