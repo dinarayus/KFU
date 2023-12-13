@@ -1,0 +1,63 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <algorithm>
+
+int main() {
+    // Открываем первый файл для чтения
+    ifstream file1("file1.txt");
+    if (!file1.is_open()) {
+        cout << "Не удалось открыть file1.txt" << std::endl;
+        return 0;
+    }
+
+    // Открываем второй файл для чтения
+    ifstream file2("file2.txt");
+    if (!file2.is_open()) {
+        cout << "Не удалось открыть file2.txt" << std::endl;
+        return 0;
+    }
+
+    // Читаем числа из первого файла и сохраняем их в векторе
+    vector<int> numbers1;
+    int number;
+    while (file1 >> number) {
+        numbers1.push_back(number);
+    }
+
+    // Читаем числа из второго файла и сохраняем их в векторе
+    vector<int> numbers2;
+    while (file2 >> number) {
+        numbers2.push_back(number);
+    }
+
+    // Закрываем файлы
+    file1.close();
+    file2.close();
+
+    // Объединяем два вектора
+    vector<int> merged;
+    merged.reserve(numbers1.size() + numbers2.size());
+    merged.insert(merged.end(), numbers1.begin(), numbers1.end());
+    merged.insert(merged.end(), numbers2.begin(), numbers2.end());
+
+    // Сортируем объединенный вектор
+    sort(merged.begin(), merged.end());
+
+    // Открываем третий файл для записи
+    ofstream file3("file3.txt");
+    if (!file3.is_open()) {
+        std::cout << "Не удалось открыть file3.txt" << std::endl;
+        return 0;
+    }
+
+    // Записываем отсортированные числа в третий файл
+    for (const auto& num : merged) {
+        file3 << num << " ";
+    }
+
+    // Закрываем третий файл
+    file3.close();
+
+    return 0;
+}
