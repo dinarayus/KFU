@@ -11,7 +11,23 @@ int digitSum(int number) {
     }
     return sum;
 }
+void vybor(int a[], int N) {
+	int count = 0;
+	for (int i = 0; i < N - 1; i++) {
+		int min = i;
+		for (int j = i + 1; j < N; j++) {
 
+			if (a[j] < a[min])
+				min = j;
+		}
+		if (min != i) {
+			int tmp = a[min];
+			a[min] = a[i];
+			a[i] = tmp;
+		}
+	}
+ }
+ 
 int main() {
     ifstream inputFile("input.txt"); // Открытие файла для чтения
     ofstream outputFile("output.txt"); // Открытие файла для записи
