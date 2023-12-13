@@ -19,10 +19,10 @@ while (!fin.eof()) {
 getline(fin, line);
 ++i;
 size_t p = line.size();
-while (p > 0 && line[p-1] == ' ')
+while (p > 0 && line[p-1] == ' '){
   --p;
-string spaces((count_lines - p) / 2, ' ');
-fout << spaces << line.substr(p) << endl;
+  string spaces((count_lines - p) / 2, ' ');
+  fout << spaces << line.substr(p) << endl;
 }
 fin.close();
 fout.close();
