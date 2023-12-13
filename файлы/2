@@ -1,0 +1,41 @@
+#include <iostream>
+#include <fstream>
+#include <algorithm>
+
+// Функция для подсчета суммы цифр числа
+int digitSum(int number) {
+    int sum = 0;
+    while (number != 0) {
+        sum += number % 10;
+        number /= 10;
+    }
+    return sum;
+}
+
+int main() {
+    ifstream inputFile("input.txt"); // Открытие файла для чтения
+    ofstream outputFile("output.txt"); // Открытие файла для записи
+
+    int number;
+    vector<int> numbers;
+
+    // Чтение чисел из файла и добавление их в вектор
+    while (inputFile >> number) {
+        numbers.push_back(number);
+    }
+
+    // Сортировка чисел по сумме цифр
+    std::sort(numbers.begin(), numbers.end(), [](int number1, int number2) {
+        return digitSum(number1) < digitSum(number2);
+    });
+
+    // Запись отсортированных чисел в файл
+    for (int number : numbers) {
+        outputFile << number << " ";
+    }
+
+    inputFile.close(); // Закрытие файла для чтения
+    outputFile.close(); // Закрытие файла для записи
+
+    return 0;
+}
