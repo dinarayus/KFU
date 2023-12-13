@@ -1,5 +1,5 @@
 #include <iostream>
-
+using namespace std;
 int findMaxLocalMin(int arr[], int size) {
 	int max_local_min = arr[0];
 
@@ -13,12 +13,16 @@ int findMaxLocalMin(int arr[], int size) {
 }
 
 int main() {
-	int arr[] = { 3, 1, 4, 2, 8, 5, 7, 6 };
-	int size = sizeof(arr) / sizeof(arr[0]);
-
+	int size;
+	cin >> size;
+	int *array;
+	array = new int[size];
+	for (int i = 0; i < size; i++) {
+		cin >> array[i];
+	}
 	int max_local_min = findMaxLocalMin(arr, size);
 
-	std::cout << "Максимальный локальный минимум: " << max_local_min << std::endl;
+	cout << "Максимальный локальный минимум: " << max_local_min << endl;
 
 	return 0;
 }
