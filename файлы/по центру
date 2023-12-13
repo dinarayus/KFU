@@ -8,8 +8,8 @@ ofstream fout("centered_text.txt");
 string line;
 int count_lines = 0;
 while (!fin.eof()) {
-getline(fin, line);
-++count_lines;
+  getline(fin, line);
+  ++count_lines;
 }
 cout << "count lines: " << count_lines << endl;
 fin.clear();
@@ -20,7 +20,7 @@ getline(fin, line);
 ++i;
 size_t p = line.size();
 while (p > 0 && line[p-1] == ' ')
---p;
+  --p;
 string spaces((count_lines - p) / 2, ' ');
 fout << spaces << line.substr(p) << endl;
 }
