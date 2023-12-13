@@ -7,14 +7,14 @@ int main() {
     // Открываем первый файл для чтения
     ifstream file1("file1.txt");
     if (!file1.is_open()) {
-        cout << "Не удалось открыть file1.txt" << std::endl;
+        cout << "Не удалось открыть file1.txt" << endl;
         return 0;
     }
 
     // Открываем второй файл для чтения
     ifstream file2("file2.txt");
     if (!file2.is_open()) {
-        cout << "Не удалось открыть file2.txt" << std::endl;
+        cout << "Не удалось открыть file2.txt" << endl;
         return 0;
     }
 
