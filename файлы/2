@@ -41,7 +41,7 @@ int main() {
     }
 
     // Сортировка чисел по сумме цифр
-    std::sort(numbers.begin(), numbers.end(), [](int number1, int number2) {
+    sort(numbers.begin(), numbers.end(), [](int number1, int number2) {
         return digitSum(number1) < digitSum(number2);
     });
 
