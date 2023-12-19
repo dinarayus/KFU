@@ -16,8 +16,9 @@ fin.clear();
 fin.seekg(0, ios::beg);
 int i = 0;
 while (!fin.eof()) {
-getline(fin, line);
-++i;
+ getline(fin, line);
+ ++i;
+}
 size_t p = line.size();
 while (p > 0 && line[p-1] == ' '){
   --p;
