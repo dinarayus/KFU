@@ -4,7 +4,7 @@
 using namespace std;
 int main() {
 	int min = 99999999;
-	int max = 0;
+	int max = -9999999;
 	string filename = "replace.txt";
 	// Открытие файла для чтения
 	ifstream fin(filename);
@@ -13,7 +13,15 @@ int main() {
 		return 1;
 	}
 	int number;
-	vector<int> numbers;
+i	int* numbers = new int[N];
+    	for (int i = 0; i < arraySize; i++) {
+        	inputFile >> numbers[i];
+   	 }
+
+
+    for (int i = 0; i < N; i++) {
+        fout << vybor(numbers[i], N) << " ";
+    };
 	// Чтение чисел из файла и сохранение в векторе
 	while (fin >> number) {
 		numbers.push_back(number);
