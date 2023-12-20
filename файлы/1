@@ -12,7 +12,7 @@ int main() {
 	int numbers;
 i	int* numbers = new int[N];
     	for (int i = 0; i < N; i++) {
-        	inputFile >> numbers[i];
+        	fin >> numbers[i];
    	 }
      	int min = numbers[0];
       	int max = numbers[0];
