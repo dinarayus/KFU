@@ -18,10 +18,6 @@ i	int* numbers = new int[N];
         	inputFile >> numbers[i];
    	 }
 
-
-    for (int i = 0; i < N; i++) {
-        fout << vybor(numbers[i], N) << " ";
-    };
 	// Чтение чисел из файла и сохранение в векторе
 	while (fin >> number) {
 		numbers.push_back(number);
