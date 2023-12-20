@@ -1,10 +1,7 @@
 #include <iostream>
 #include <fstream>
-#include <vector>
 using namespace std;
 int main() {
-	int min = 99999999;
-	int max = -9999999;
 	string filename = "replace.txt";
 	// Открытие файла для чтения
 	ifstream fin(filename);
@@ -12,33 +9,30 @@ int main() {
 		cerr << "Ошибка открытия файла." << endl;
 		return 1;
 	}
-	int number;
+	int numbers;
 i	int* numbers = new int[N];
-    	for (int i = 0; i < arraySize; i++) {
+    	for (int i = 0; i < N; i++) {
         	inputFile >> numbers[i];
    	 }
-
-	// Чтение чисел из файла и сохранение в векторе
-	while (fin >> number) {
-		numbers.push_back(number);
-		if (number < min)
-		{
-			min = number;
-			max = min;
-			continue;
-		}
-		if (number > max) {
-			max = number;
-		}
-	}
-	fin.close();
-	// Нахождение позиций минимального и максимального чисел
-	auto minPos = find(numbers.begin(), numbers.end(), min);
-	auto maxPos = find(numbers.begin(), numbers.end(), max);
-	// Меняем местами минимальное и максимальное числа
-	if (minPos != numbers.end() && maxPos != numbers.end()) {
-		iter_swap(minPos, maxPos);
-	}
+     	int min = numbers[0];
+      	int max = numbers[0];
+      	int index_min = 0;
+       	int index_max = 0; 
+	for(int i = 1; i < N; i++ ){
+ 		if(numbers[i] <= min){
+   			min = numbers[i]
+      			index_min = i;
+	 		}
+   	 }
+     	for(int i = 1; i < N; i++ ){
+ 		if(numbers[i] >= max){
+   			max = numbers[i]
+      			index_max = i;
+	 		}
+   	 }
+     	numbers[index_max] = min;
+      	numbers[index_min] = max;
+	
 	// Открытие файла для записи
 	ofstream fout(filename);
 	if (!fout) {
@@ -46,8 +40,9 @@ i	int* numbers = new int[N];
 		return 1;
 	}
 	// Запись измененных чисел обратно в файл
-	for (const auto& num : numbers) {
-		fout << num << " ";
+	for (int i = 0; i < N; i++) {
+		fout << numbers[i] << " ";
 	}
+ 	fin.close()
 	fout.close();
 }
