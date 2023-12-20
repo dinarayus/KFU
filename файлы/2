@@ -31,8 +31,29 @@ void vybor(int a[], int N) {
 int main() {
     ifstream inputFile("input.txt"); // Открытие файла для чтения
     ofstream outputFile("output.txt"); // Открытие файла для записи
+    int N; 
+    inputFile >> N;
 
+    int* numbers = new int[arraySize]; // Выделяем память для массива
+
+    // Чтение чисел из файла и сохранение в массиве
+    for (int i = 0; i < arraySize; ++i) {
+        inputFile >> numbers[i];
+    }
+
+    inputFile.close(); // Закрываем файл
+
+    // Вывод чисел массива
+    for (int i = 0; i < arraySize; ++i) {
+        std::cout << numbers[i] << " ";
+    }
+
+    delete[] numbers; // Освобождаем память, выделенную для массива
+
+    return 0;
+}
     int number;
+    
     vector<int> numbers;
 
     // Чтение чисел из файла и добавление их в вектор
