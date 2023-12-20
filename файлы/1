@@ -43,6 +43,6 @@ i	int* numbers = new int[N];
 	for (int i = 0; i < N; i++) {
 		fout << numbers[i] << " ";
 	}
- 	fin.close()
+ 	fin.close();
 	fout.close();
 }
