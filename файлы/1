@@ -45,4 +45,5 @@ i	int* massiv = new int[size];
 	}
  	fin.close();
 	fout.close();
+ 	return 0;
 }
