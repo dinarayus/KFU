@@ -2,46 +2,46 @@
 #include <fstream>
 using namespace std;
 int main() {
-	string filename = "replace.txt";
 	// Открытие файла для чтения
-	ifstream fin(filename);
+	ifstream fin("name.txt");
 	if (!fin) {
 		cerr << "Ошибка открытия файла." << endl;
 		return 1;
 	}
-	int numbers;
-i	int* numbers = new int[N];
-    	for (int i = 0; i < N; i++) {
-        	fin >> numbers[i];
+ 	int size;
+	int massiv;
+i	int* massiv = new int[size];
+    	for (int i = 0; i < size; i++) {
+        	fin >> massiv[i];
    	 }
-     	int min = numbers[0];
-      	int max = numbers[0];
+     	int min = massiv[0];
+      	int max = massiv[0];
       	int index_min = 0;
        	int index_max = 0; 
-	for(int i = 0; i < N; i++ ){
- 		if(numbers[i] <= min){
-   			min = numbers[i]
+	for(int i = 0; i < size; i++ ){
+ 		if(massiv[i] <= min){
+   			min = massiv[i]
       			index_min = i;
 	 		}
    	 }
-     	for(int i = 0; i < N; i++ ){
- 		if(numbers[i] >= max){
-   			max = numbers[i]
+     	for(int i = 0; i < size; i++ ){
+ 		if(massiv[i] >= max){
+   			max = massiv[i]
       			index_max = i;
 	 		}
    	 }
-     	numbers[index_max] = min;
-      	numbers[index_min] = max;
+     	massiv[index_max] = min;
+      	massiv[index_min] = max;
 	
 	// Открытие файла для записи
-	ofstream fout(filename);
+	ofstream fout("name.txt");
 	if (!fout) {
 		cerr << "Ошибка открытия файла." << endl;
 		return 1;
 	}
 	// Запись измененных чисел обратно в файл
-	for (int i = 0; i < N; i++) {
-		fout << numbers[i] << " ";
+	for (int i = 0; i < size; i++) {
+		fout << massiv[i] << " ";
 	}
  	fin.close();
 	fout.close();
