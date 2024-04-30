@@ -1,0 +1,34 @@
+struct Pair {
+  int first;
+  int second;
+Pair*next;
+};
+
+struct Stack {
+  Pair* top;
+};
+
+void push(Stack* stack, int first, intsecond){
+  Pair*new_pair = new Pair;
+  new_pair->first = first;
+  new_pair->second = second;
+  new_pair->next = stack->top;
+  stack->top = new_pair;
+}
+
+Pair* pop(Stack* stack) {
+  if (stack->top == nullptr) {
+    return nullptr;
+  }
+  Pair* top_pair = stack->top;
+  stack->top = stack->top->next;
+  return top_pair;
+}
+
+int main() {
+  Stack stack;
+  stack.top = nullptr;
+
+  push(&stack, 1, 2);
+  push(&stack, 3, 4);
+  push(&stack, 5, 6);
