@@ -1,0 +1,62 @@
+#include <queue>
+#include <iostream>
+
+usingnamespacestd;
+
+int main() {
+  // Очередь для хранения последних 5 результатов измерений
+  queue<int> queue;
+
+// ��еременные для хранения наибольшей суммы
+  int max_sum = 0;
+  int prev_sum = 0;
+
+  // Переменные для хранения текущего и предыдущего времени
+  int current_time = 0;
+  int prev_time = 0;
+
+  // Бесконечный цикл для обработки результатов измерений
+  while (true) {
+    // Получение нового результата измерения
+    int measurement;
+    cin >> measurement;
+
+    // Получение текущего времени
+    current_time = clock();
+
+    // Если между текущим и предыдущим временем прошло более 5 секунд, очистка очереди
+    if (current_time - prev_time > 5) {
+      while (!queue.empty()) {
+        queue.pop();
+      }
+    }
+
+    // Добавление нового результата измерения в очередь
+    queue.push(measurement);
+
+    // Обновление предыдущего времени
+    prev_time = current_time;
+
+    // Если в очереди есть хотя бы два элемента, поиск наибольшей суммы
+    if (queue.size() >= 2) {
+      // Получение первого и второго элементов очереди
+      int first = queue.front();
+      queue.pop();
+      int second = queue.front();
+
+      // Обновление наибольшей суммы
+      int sum = first + second;
+      if (sum > max_sum) {
+        max_sum = sum;
+      }
+
+      // Обновление предыдущей суммы
+      prev_sum = sum;
+    }
+  }
+
+  // Вывод наибольшей суммы
+  cout << max_sum << endl;
+
+  return 0;
+}
