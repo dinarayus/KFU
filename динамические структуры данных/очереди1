@@ -1,0 +1,48 @@
+#include <iostream>
+#include <queue>
+
+usingnamespace std;
+
+int main() {
+  // Создание очереди для хранения результатов измерений
+  queue<int> q;
+
+  //��а��альное время последнего измерения
+  int last_time = 0;
+
+  // Наибольшая сумма двух результатов измерений
+  int max_sum = 0;
+
+  while (true) {
+    // Получение текущего времени и результата измерения
+    int current_time, measurement;
+    cin >> current_time >> measurement;
+
+    // Добавление результата измерения в очередь
+    q.push(measurement);
+
+    // Удаление результатов измерений, которые были сделаны более 5 секунд назад
+    while (!q.empty() && current_time - q.front() > 5) {
+      q.pop();
+    }
+
+    // Проверка, есть ли в очереди два или более результатов измерений
+    if (q.size() >= 2) {
+      // Нахождение наибольшей суммы двух результатов измерений
+intsum1 = q.front();
+      q.pop();
+      int sum2 = q.front();
+      q.pop();
+      max_sum = max(max_sum, sum1 + sum2);
+
+      // Добавление результатов измерений обратно в очередь
+      q.push(sum1);
+      q.push(sum2);
+    }
+
+    // Вывод наибольшей суммы двух результатов измерений
+    cout << max_sum << endl;
+  }
+
+  return 0;
+}
