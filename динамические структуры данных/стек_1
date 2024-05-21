@@ -1,7 +1,7 @@
 struct Pair {
   int first;
   int second;
-Pair*next;
+  Pair*next;
 };
 
 struct Stack {
