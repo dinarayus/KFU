@@ -8,7 +8,7 @@ struct Stack {
   Pair* top;
 };
 
-void push(Stack* stack, int first, intsecond){
+void push(Stack* stack, int first, int second){ //добавлять элемент
   Pair*new_pair = new Pair;
   new_pair->first = first;
   new_pair->second = second;
@@ -16,9 +16,9 @@ void push(Stack* stack, int first, intsecond){
   stack->top = new_pair;
 }
 
-Pair* pop(Stack* stack) {
+Pair* pop(Stack* stack) { // извленчие элемента
   if (stack->top == nullptr) {
-    return nullptr;
+    return nullptr; //стек пустой
   }
   Pair* top_pair = stack->top;
   stack->top = stack->top->next;
