@@ -1,0 +1,104 @@
+using System;
+
+public class Complex
+{
+    private double real;
+    private double imaginary;
+
+    public Complex(double real, double imaginary)
+    {
+        this.real = real;
+        this.imaginary = imaginary;
+    }
+
+    // Оператор сложения
+    public static Complex operator +(Complex c1, Complex c2)
+    {
+        return new Complex(c1.real + c2.real, c1.imaginary + c2.imaginary);
+    }
+
+    // Оператор вычитания
+    public static Complex operator -(Complex c1, Complex c2)
+    {
+        return new Complex(c1.real - c2.real, c1.imaginary - c2.imaginary);
+    }
+
+    // Оператор умножения
+    public static Complex operator *(Complex c1, Complex c2)
+    {
+        return new Complex(
+            c1.real * c2.real - c1.imaginary * c2.imaginary,
+            c1.real * c2.imaginary + c1.imaginary * c2.real
+        );
+    }
+
+    // Оператор деления
+    public static Complex operator /(Complex c1, Complex c2)
+    {
+        double denominator = c2.real * c2.real + c2.imaginary * c2.imaginary;
+        if (denominator == 0)
+        {
+            throw new DivideByZeroException("Cannot divide by zero.");
+        }
+
+        return new Complex(
+            (c1.real * c2.real + c1.imaginary * c2.imaginary) / denominator,
+            (c1.imaginary * c2.real - c1.real * c2.imaginary) / denominator
+        );
+    }
+
+    // Метод для вычисления модуля
+    public double Modulus()
+    {
+        return Math.Sqrt(real * real + imaginary * imaginary);
+    }
+
+    // Метод для вычисления аргумента
+    public double Argument()
+    {
+        return Math.Atan2(imaginary, real);
+    }
+
+    public override string ToString()
+    {
+        return $"{real} + {imaginary}i";
+    }
+
+    public string Describe()
+    {
+        if (imaginary == 0)
+        {
+            return $"{real}";
+        }
+        else if (real == 0)
+        {
+            return $"{imaginary}i";
+        }
+        else
+        {
+            return $"{real} + {imaginary}i";
+        }
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        var c1 = new Complex(2, 3);
+        var c2 = new Complex(1, -1);
+
+        var sum = c1 + c2;
+        var difference = c1 - c2;
+        var product = c1 * c2;
+        var quotient = c1 / c2;
+
+        Console.WriteLine($"Sum: {sum}"); // Output: Sum: 3 + 2i
+        Console.WriteLine($"Difference: {difference}"); // Output: Difference: 1 + 4i
+        Console.WriteLine($"Product: {product}"); // Output: Product: 5 + 1i
+        Console.WriteLine($"Quotient: {quotient}"); // Output: Quotient: 0.5 + 2.5i
+        Console.WriteLine($"Modulus of c1: {c1.Modulus()}"); // Output: Modulus of c1: 3.605551275463989
+        Console.WriteLine($"Argument of c1: {c1.Argument()}"); // Output: Argument of c1: 0.982793723247329
+    }
+}
+
